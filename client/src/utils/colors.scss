@@ -1,0 +1,7 @@
+$background-color: #E9E6E6;
+$font-color: #566885;
+
+
+@mixin bgcolor {
+  background-color: $font-color;
+}

@@ -1,0 +1,16 @@
+POST http://localhost:5000/api/files
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMTFhZjdiMDA0MGVhMjNhY2FlYjA1NyIsImlhdCI6MTYxMTc3MjA5MiwiZXhwIjoxNjExNzc1NjkyfQ.YHPBq98vfDGgCJ1mdXjQuDgHEdQtGMLkQuBejArJaBk
+
+# папка в корневом каталоге
+# {
+#   "name":"second_dir",
+#   "type":"dir"
+# }
+
+#  папка в каталоге с указанным айди
+{
+  "name":"test_dir",
+  "type":"dir",
+  "parent": "6011b1a2e52aa5290855fd81"
+}

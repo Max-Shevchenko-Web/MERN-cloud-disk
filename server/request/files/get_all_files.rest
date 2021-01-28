@@ -1,0 +1,8 @@
+GET  http://localhost:5000/api/files
+      ?parent=6011b1a2e52aa5290855fd81
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMTFhZjdiMDA0MGVhMjNhY2FlYjA1NyIsImlhdCI6MTYxMTc4MzU4MywiZXhwIjoxNjExNzg3MTgzfQ.jHJHVganmX7YNruXT3i9qAtxzXfSESCKV0jOT3cR71E
+
+# {
+#   "parent": "6011af7b0040ea23acaeb057"
+# }
