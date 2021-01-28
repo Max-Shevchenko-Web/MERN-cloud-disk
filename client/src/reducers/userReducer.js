@@ -28,5 +28,3 @@ export default function userReducer(state = defaultState, action) {
 // actioncreator
 export const setUser = user => ({type: SET_USER, payload: user})
 export const logout = () => ({type: LOGOUT})
-
-// в localStorage неверно лезть в редюсере это надо делать в юзэфекте или еще где

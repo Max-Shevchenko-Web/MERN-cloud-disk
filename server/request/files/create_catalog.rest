@@ -1,10 +1,10 @@
 POST http://localhost:5000/api/files
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMTFhZjdiMDA0MGVhMjNhY2FlYjA1NyIsImlhdCI6MTYxMTc3MjA5MiwiZXhwIjoxNjExNzc1NjkyfQ.YHPBq98vfDGgCJ1mdXjQuDgHEdQtGMLkQuBejArJaBk
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMTE1ZmRlOTk1MDljMjgxMDA5NzdiZSIsImlhdCI6MTYxMTg1Nzc4NywiZXhwIjoxNjExODYxMzg3fQ.bi-lKzYqGDLj0BaeU1h-wbbQgXW1kOUO2ew_UR3s910
 
 # папка в корневом каталоге
 # {
-#   "name":"second_dir",
+#   "name":"first_dir",
 #   "type":"dir"
 # }
 
@@ -12,5 +12,5 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMTFhZjdiM
 {
   "name":"test_dir",
   "type":"dir",
-  "parent": "6011b1a2e52aa5290855fd81"
+  "parent": "6012ffaf30cc6f2748a7b4f7"
 }
