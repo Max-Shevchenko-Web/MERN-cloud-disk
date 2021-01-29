@@ -1,6 +1,5 @@
 const fs = require('fs')
 const File = require('../models/File')
-const config = require('config')
 const path = require('path');
 
 class FileService {
