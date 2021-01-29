@@ -17,6 +17,7 @@ function App() {
     if(!isAuth) {
       localStorage.removeItem('token')
     }
+  // eslint-disable-next-line
   }, [])
 
   return (

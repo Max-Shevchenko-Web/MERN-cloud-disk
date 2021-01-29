@@ -1,3 +1,5 @@
+@import '../../utils/colors';
+
 .disk {
   margin-top: 20px;
 
@@ -8,9 +10,18 @@
   &__create {
     margin-left: 10px;
   }
+
+  &__upload-input {
+    display: none;
+  }
+
+  &__upload-label {
+    border: 2px dashed $font-color;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
 }
-
-
 
 .popup {
   width: 100%;
