@@ -35,21 +35,18 @@ const Disk = () => {
     function dragEnterHandler(event) {
       event.preventDefault()
       event.stopPropagation()
-      console.log('dragEnter')
       setDragEnter(true)
     }
 
     function dragLeaveHandler(event) {
         event.preventDefault()
         event.stopPropagation()
-        console.log('dragLeave')
         setDragEnter(false)
     }
 
     function dropHandler(event) {
         event.preventDefault()
         event.stopPropagation()
-        console.log('drop')
         let files = [...event.dataTransfer.files]
         files.forEach(file => dispatch(uploadFile(file, currentDir)))
         setDragEnter(false)
