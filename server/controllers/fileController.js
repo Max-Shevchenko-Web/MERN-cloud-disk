@@ -67,12 +67,18 @@ class FileController {
 
       //разделим страку по точкам и заберем самое последнее
       const type = file.name.split('.').pop()
+
+      let pathForFile = file.name
+      if (parent) {
+        pathForFile = parent.path + '/' + file.name
+      }
+      console.log('pathForFile', pathForFile)
       // создадим модель файла для базы данных // ?. - синтаксис который  проверяет на наличее того что после точки и если нет то не будет запрашивать
       const dbFile = new File({
         name: file.name,
         type,
         size: file.size,
-        path: ( parent === null || parent === undefined) ? undefined : parent.path,
+        path: pathForFile,
         parent: ( parent === null || parent === undefined) ? undefined : parent._id,
         user: user._id
     })
@@ -92,7 +98,7 @@ class FileController {
   async downloadFile(req, res) {
       try {
           const file = await File.findOne({_id: req.query.id, user: req.user.id})
-          const filePath = path.join(__dirname, `../files/${req.user.id}/${file.path}/${file.name}`)
+          const filePath = path.join(__dirname, `../files/${req.user.id}/${file.path}`)
           if (fs.existsSync(filePath)) {
               return res.download(filePath, file.name)
           }
@@ -102,6 +108,28 @@ class FileController {
           res.status(500).json({message: "Download error"})
       }
   }
+
+  // удаление файла
+  async deleteFile(req, res) {
+    try {
+        const file = await File.findOne({_id: req.query.id, user: req.user.id})
+        console.log(file)
+        if (!file) {
+            return res.status(400).json({message: 'file not found'})
+        }
+        fileService.deleteFile(file)
+        await file.remove()
+        return res.json({message: 'File was deleted'})
+    } catch (e) {
+        console.log(e)
+        return res.status(400).json({message: 'Dir is not empty'})
+    }
+  }
 }
 
 module.exports = new FileController()
+
+
+
+
+// ПОРАБОТАТЬ НАД ПУТЕМ К ЗАГРУЗКЕ ОН СЛОМАЛСЯ ТАК КАК МЫ ПОМЕНЯЛИ ПРАВИЛА
