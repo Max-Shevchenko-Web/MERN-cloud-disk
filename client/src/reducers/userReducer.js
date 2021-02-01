@@ -3,6 +3,7 @@ const LOGOUT = "LOGOUT"
 
 const defaultState = {
   currentUser: {},
+  token: '',
   isAuth: false
 }
 

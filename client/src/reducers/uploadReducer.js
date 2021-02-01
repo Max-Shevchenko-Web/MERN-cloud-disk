@@ -6,7 +6,7 @@ const CHANGE_UPLOAD_FILE = 'CHANGE_UPLOAD_FILE'
 
 
 const defaultState = {
-    isVisible: true,
+    isVisible: false,
     files: []
 }
 

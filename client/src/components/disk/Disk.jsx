@@ -7,6 +7,8 @@ import Popup from './Popup';
 import {setPopupDisplay, setCurrentDir, popFromStack} from "../../reducers/fileReducer";
 import Uploader from './uploader/Uploader';
 
+
+
 const Disk = () => {
     const dispatch = useDispatch()
     const currentDir = useSelector(state => state.files.currentDir)
