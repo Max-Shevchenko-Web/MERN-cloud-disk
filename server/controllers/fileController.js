@@ -72,7 +72,6 @@ class FileController {
       if (parent) {
         pathForFile = parent.path + '/' + file.name
       }
-      console.log('pathForFile', pathForFile)
       // создадим модель файла для базы данных // ?. - синтаксис который  проверяет на наличее того что после точки и если нет то не будет запрашивать
       const dbFile = new File({
         name: file.name,
@@ -113,7 +112,6 @@ class FileController {
   async deleteFile(req, res) {
     try {
         const file = await File.findOne({_id: req.query.id, user: req.user.id})
-        console.log(file)
         if (!file) {
             return res.status(400).json({message: 'file not found'})
         }
