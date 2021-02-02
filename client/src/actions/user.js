@@ -20,8 +20,8 @@ export const login =  (email, password) => {
               email,
               password
           })
-          dispatch(setUser(response.data.user))
           localStorage.setItem('token', response.data.token)
+          dispatch(setUser(response.data.user))
       } catch (e) {
           alert(e.response.data.message)
       }
