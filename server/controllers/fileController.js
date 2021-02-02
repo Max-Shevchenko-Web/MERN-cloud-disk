@@ -3,6 +3,7 @@ const fileService = require('../services/fileService')
 const User = require('../models/User')
 const File = require('../models/File')
 const path = require('path');
+const Uuid = require('uuid')
 
 class FileController {
   async createDir(req, res) {
@@ -150,11 +151,37 @@ class FileController {
         return res.status(400).json({message: 'Search error'})
     }
   }
+
+  // загрузка аватара на сервер
+  async uploadAvatar(req, res) {
+    try {
+        const file = req.files.file
+        const user = await User.findById(req.user.id)
+        const avatarName = Uuid.v4() + ".jpg"
+        const avatarPath = path.join(__dirname, `../static/${avatarName}`)
+        file.mv(avatarPath)
+        user.avatar = avatarName
+        await user.save()
+        return res.json(user)
+    } catch (e) {
+        console.log(e)
+        return res.status(400).json({message: 'Upload avatar error'})
+    }
+  }
+
+  async deleteAvatar(req, res) {
+    try {
+        const user = await User.findById(req.user.id)
+        const avatarPath = path.join(__dirname, `../static/${user.avatar}`)
+        fs.unlinkSync(avatarPath)
+        user.avatar = null
+        await user.save()
+        return res.json(user)
+    } catch (e) {
+        console.log(e)
+        return res.status(400).json({message: 'Delete avatar error'})
+    }
+  }
 }
 
 module.exports = new FileController()
-
-
-
-
-// ПОРАБОТАТЬ НАД ПУТЕМ К ЗАГРУЗКЕ ОН СЛОМАЛСЯ ТАК КАК МЫ ПОМЕНЯЛИ ПРАВИЛА
