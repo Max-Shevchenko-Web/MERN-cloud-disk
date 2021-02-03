@@ -40,8 +40,8 @@ const File = ({file}) => {
             <div className="file__date">{file.date.slice(0, 10)}</div>
             <div className="file__size">{sizeFormat(file.size)}</div>
             {file.type !== 'dir' &&
-            <button onClick={(e) => downloadClickHandler(e)} className="file__btn file__download">download</button>}
-            <button onClick={(e) => deleteClickHandler(e)} className="file__btn file__delete">delete</button>
+            <button onClick={(e) => downloadClickHandler(e)} className="file__btn file__download"></button>}
+            <button onClick={(e) => deleteClickHandler(e)} className="file__btn file__delete"></button>
         </div>
     );
   }

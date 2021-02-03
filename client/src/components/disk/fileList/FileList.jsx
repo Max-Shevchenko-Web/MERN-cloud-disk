@@ -3,12 +3,15 @@ import './fileList.scss'
 import {useSelector} from "react-redux";
 import File from "./file/File";
 import {CSSTransition, TransitionGroup} from "react-transition-group"
+import { sortArrayOfObjectsUp, sortArrayOfObjectsDown } from './../../../utils/fuctionHelper';
 
-const FileList = () => {
-
-  const files = useSelector(state => state.files.files)
+const FileList = ({sort, direction}) => {
+  let files = useSelector(state => state.files.files)
   const fileView = useSelector(state => state.app.view)
 
+  files = (direction === 'down')
+      ? sortArrayOfObjectsUp(files, sort)
+      : sortArrayOfObjectsDown(files, sort)
 
   if (files.length === 0) {
       return (

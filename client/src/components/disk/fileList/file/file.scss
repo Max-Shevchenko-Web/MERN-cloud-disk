@@ -24,6 +24,14 @@
   }
   &__btn {
     display: none;
+    cursor: pointer;
+    width: 58px;
+    height: 34px;
+    margin: 0 auto;
+    padding: 10px 10px;
+    border: 1px solid #566885;
+    box-sizing: border-box;
+    border-radius: 37px;
   }
 
   &:hover &__date {
@@ -35,10 +43,14 @@
   &:hover &__download {
     grid-column-start: 5;
     display: block;
+    background: url("../../../../assets/img/download.svg") no-repeat 50% 50%;
+
   }
+
   &:hover &__delete {
     grid-column-start: 6;
     display: block;
+    background: url("../../../../assets/img/delete.svg") no-repeat 50% 50%;
   }
 }
 

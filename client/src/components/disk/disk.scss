@@ -25,6 +25,23 @@
 
   &__select {
     margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &_sort-direction {
+      padding: 8px 18px;
+      background: url("../../assets/img/direction.svg") no-repeat 50% 50%;
+      margin-right: 10px;
+      border: none;
+      cursor: pointer;
+      outline: none;
+
+      &.active {
+        transform: rotateX(180deg);
+      }
+    }
+
   }
 
   &__list, &__plate {

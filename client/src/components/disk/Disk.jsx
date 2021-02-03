@@ -16,11 +16,18 @@ const Disk = () => {
     const lastDir = useSelector(state => state.files.lastDir)
     const [dragEnter, setDragEnter] = useState(false)
     const [sort, setSort] = useState('type')
+    const [sortDirection, setsortDirection] = useState('disk__select_sort-direction')
+    const [direction, setDirection] = useState('down')
     const loader = useSelector(state => state.app.loader)
 
     useEffect(() => {
         dispatch(getFiles(currentDir, sort))
     }, [dispatch, currentDir, sort])
+
+    const sortHelpHendler = () => {
+      setDirection(direction === 'down' ? 'up' : 'down')
+      setsortDirection(sortDirection === 'disk__select_sort-direction' ? 'disk__select_sort-direction active' : 'disk__select_sort-direction')
+    }
 
     function showPopupHandler() {
       dispatch(setPopupDisplay('flex'))
@@ -75,17 +82,23 @@ const Disk = () => {
                   <label htmlFor="disk__upload-input" className="disk__upload-label">Загрузить файл</label>
                   <input multiple={true} onChange={(event)=> fileUploadHandler(event)} type="file" id="disk__upload-input" className="disk__upload-input"/>
                 </div>
-                <select value={sort}
-                            onChange={(e) => setSort(e.target.value)}
-                            className='disk__select'>
-                    <option value="name">По имени</option>
-                    <option value="type">По типу</option>
-                    <option value="date">По дате</option>
-                </select>
+                <div className='disk__select'>
+                  <button className={sortDirection} onClick={() => sortHelpHendler()}/>
+                  <select value={sort}
+                              onChange={(e) => setSort(e.target.value)}
+                              >
+                      <option value="name">По имени</option>
+                      <option value="type">По типу</option>
+                      <option value="date">По дате</option>
+                  </select>
+                </div>
                 <button className="disk__plate" onClick={() => dispatch(setFileView('plate'))}/>
                 <button className="disk__list" onClick={() => dispatch(setFileView('list'))}/>
             </div>
-            <FileList/>
+            <FileList
+              sort={sort}
+              direction={direction}
+            />
             <Popup/>
             <Uploader/>
         </div>
