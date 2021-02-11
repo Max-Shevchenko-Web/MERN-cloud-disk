@@ -7,7 +7,7 @@ const fileUpload = require("express-fileupload")
 const app = express()
 const corsMiddleware = require('./middleware/cors.middleware')
 
-const PORT = config.get("serverPort")
+const PORT = process.env.PORT || config.get("serverPort")
 const URL = config.get("dbUrl")
 
 //наш самодельный cors

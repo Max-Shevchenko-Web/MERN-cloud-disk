@@ -34,8 +34,6 @@ export default function fileReducer(state = defaultState, action) {
     }
 }
 
-// ДОДЕЛАТЬ ФУНКЦИОНАЛ КНОПКИ НАЗАД ПО ПАПКАМ popFromStack/lastDir
-
 export const setFiles = (files) => ({type: SET_FILES, payload: files})
 export const setCurrentDir= (dir) => ({type: SET_CURRENT_DIR, payload: dir})
 export const addFile = (file) => ({type: ADD_FILE, payload: file})
